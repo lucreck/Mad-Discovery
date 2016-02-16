@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Edit Event</title>
+        <style>
+            a {
+                font-size: 40px;
+            }     
+        </style>
+    </head>
+    <body>
+        <a href="index.html">Home</a>
+        
+        <table id="tableEvent">
+            <tr>
+                <td>Search</td>
+                <td><input type="text" id="txtSearch" placeholder="Enter event id"/></td>
+                <td><button id="btnSearch">Search</button></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" id="txtID" readonly></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="txtName"></td>      
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td><input type="text" id="txtLocation"></td>                      
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td><input type="datetime" id="txtDate"></td>                      
+            </tr>
+            <tr>
+                <td>Start Time</td>
+                <td><input type="text" id="txtStartTime"></td>      
+            </tr>
+            <tr>
+                <td>Organize Name</td>
+                <td><input type="text" id="txtOrgName"></td>      
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="btnUpdate">Update</button></td>
+            </tr>
+        </table>     
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/DatabaseHandler.js"></script>
+        <script type="text/javascript">
+                    
+            var txtSearch = document.getElementById("txtSearch");
+            var txtID = document.getElementById("txtID");
+            var txtName = document.getElementById("txtName");
+            var txtLocation = document.getElementById("txtLocation");
+            var txtDate = document.getElementById("txtDate");
+            var txtStartTime = document.getElementById("txtStartTime");
+            var txtOrgName = document.getElementById("txtOrgName");
+
+            connectDB();
+
+            var btnSearch = document.getElementById("btnSearch");
+            btnSearch.addEventListener("click", function() {
+                searchEvent(txtSearch.value, function(eventJSON) {
+                    
+                    var eventID = eventJSON.ID;
+                    var eventName = eventJSON.EventName;
+                    var eventLocation = eventJSON.EventLocation;
+                    var eventDate = eventJSON.EventDate;
+                    var eventStartTime = eventJSON.EventStartTime;
+                    var eventOrgName = eventJSON.EventOrgName;
+                    
+                    txtID.value = eventID;
+                    txtName.value = eventName;
+                    txtLocation.value = eventLocation;
+                    txtDate.value = eventDate;
+                    txtStartTime.value = eventStartTime;
+                    txtOrgName.value = eventOrgName;
+                    
+                });
+            });
+            
+            var btnUpdate = document.getElementById("btnUpdate");
+            btnUpdate.addEventListener("click", function() {
+                
+                editEvent(txtName.value, txtLocation.value, txtDate.value, txtStartTime.value, txtOrgName.value, txtID.value, function() {
+                    alert("UPDATE OK");
+                });
+                
+            });
+            
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/anypicker-font.css" />
+  <link rel="stylesheet" type="text/css" href="css/anypicker.css" />
+  <link rel="stylesheet" type="text/css" href="css/anypicker-android.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/animsition.min.css" /> -->
+  <link rel="stylesheet" type="text/css" href="css/animate.css" />
+  <link rel="stylesheet" type="text/css" href="css/mad.css" />
+  <link rel="stylesheet" type="text/css" href="css/page.css" />
+  <title>Mad Dicovery</title>
+</head>
+
+<body>
+  <!-- bar -->
+  <header class="bar bar-nav">
+    <a class="bar-btn bar-btn-nom pull-left" id="cancel-register">
+      <span class="glyphicon glyphicon-remove"></span>
+    </a>
+    <a class="bar-btn bar-btn-nom pull-right" id="register-btn">
+      <span class="glyphicon glyphicon-ok"></span>
+    </a>
+
+    <a class="bar-btn bar-btn-picture pull-left animated fadeIn" id="back-register">
+      <span class="glyphicon glyphicon-menu-left"></span>
+    </a>
+    <a class="bar-btn bar-btn-picture pull-right btn2in1 animated fadeIn" id="done-map">
+      Select
+    </a>
+
+    <a class="bar-btn bar-btn-home pull-left animated fadeIn" id="menu-btn">
+      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </a>
+    <a class="bar-btn bar-btn-home new-btn pull-right animated fadeIn">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+
+    <a class="bar-btn bar-btn-map home-btn pull-left animated fadeIn">
+      <span class="glyphicon glyphicon-menu-left"></span>
+    </a>
+    <a class="bar-btn bar-btn-map new-btn pull-right animated fadeIn">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+
+    <a class="bar-btn bar-btn-detail home-btn pull-left animated fadeIn">
+      <span class="glyphicon glyphicon-menu-left"></span>
+    </a>
+    <a class="bar-btn bar-btn-detail pull-right animated fadeIn" id="edit-btn">
+      <span class="glyphicon glyphicon-edit"></span>
+    </a>
+    <h1 class="title animated fadeInRight">Events</h1>
+  </header>
+  <!-- Home -->
+  <div class="page animated" id="home-page">
+    <div class="input-group">
+      <a class="input-group-addon btn-xs addon-me currentAddonMe" id="today">Today</a>
+      <a class="input-group-addon btn-xs addon-me" id="week">Week</a>
+      <a class="input-group-addon btn-xs addon-me" id="month">Month</a>
+    </div>
+
+    <div class="all-events" id="all-events">
+      <!-- <div class='event-item'>
+        <div class='event-container' id='110'>
+          <div class='event-image'>
+            <a href='#'><img src='img/mugi.jpg' alt=''></a>
+          </div>
+          <div class='event-content'>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <span class='event-date'>
+                <span class='glyphicon glyphicon-time'></span>11:00 pm
+                <span class='pull-right'>
+                  <span class='glyphicon glyphicon-calendar'></span> Jan 31 2016
+                </span>
+                </span>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <a class='event-title'>
+                The event of events
+                </a>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <a class='event-location'>
+                  <span class='glyphicon glyphicon-map-marker'></span>New York
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class='clearfix'></div>
+        </div>
+        <div class='event-delete' id='111'>
+          <button class='event-end-btn pull-left'><span class='glyphicon glyphicon-ok-circle'></span></button>
+          <button class='event-delete-btn'>
+            <span class='glyphicon glyphicon-trash behide-icon'></span>
+          </button>
+          <button class='event-location-btn'>
+            <span class='glyphicon glyphicon-map-marker behide-icon'></span>
+          </button>
+          <button class='event-reminder-btn'>
+            <span class='glyphicon glyphicon-bell behide-icon'></span>
+          </button>
+        </div>
+        <div class='clearfix'></div>
+      </div> -->
+  </div>
+  </div>
+  <!-- new -->
+  <div class="page animated  fadeOutRight" id="new-event-page">
+    <div class="flex-container">
+      <div class="row">
+        <div class="col-xs-12 col-none-padding-left">
+          <input placeholder="Title" class="form-control" type="text" id="txtName" />
+        </div>
+        <div class="col-xs-12  col-none-padding-left">
+          <input class="form-control" type="text" id="txtOrganizer" placeholder="Organizer" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 form-btn col-none-padding-left">
+          <input class="form-control" type="text" id="txtLocation" placeholder="Location" />
+        </div>
+        <div class="col-xs-2 btn-div  col-none-padding-left" style="padding-left:0">
+          <button class="btn btn-12 btn-box" type="submit" id="findLocation-Btn">
+            <span class="glyphicon glyphicon-map-marker"></span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12  col-none-padding-left">
+          <div class="col-xs-4 label-left">
+            <label class="txt-label" for="txtDate">Date*</label>
+          </div>
+          <div class="col-xs-8 txt-right" form-btn>
+            <input class="form-control text-disable" readonly type="datetime" id="txtDate" />
+          </div>
+        </div>
+        <div class="col-xs-12  col-none-padding-left">
+          <div class="col-xs-4 label-left">
+            <label class="txt-label" for="txtStartTime">Start time</label>
+          </div>
+          <div class="col-xs-8 txt-right">
+            <input class="form-control text-disable" type="text" readonly id="txtStartTime" />
+          </div>
+        </div>
+        <div class="col-xs-12 last-div col-none-padding-left">
+          <div class="col-xs-4 label-left">
+            <label class="txt-label">Ends</label>
+          </div>
+          <div class="col-xs-8 txt-right">
+            <input class="form-control text-disable" readonly type="datetime" id="txtEnds" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 last-div  col-none-padding-left" id="takePicture">
+          <div class="col-xs-4 label-left">
+            <span class="txt-label">Image</span>
+          </div>
+          <div class="col-xs-8 txt-right ">
+            <a class="takePicture-icon">
+              <img src="img/default.jpg" style="height: 40px; width: auto; margin-top:-6px; padding:0px 5px 0 0;" alt="" id="selectedImageNe">
+              <span class="glyphicon glyphicon-menu-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 last-div  col-none-padding-left">
+          <div class="col-xs-4 label-left">
+            <span class="txt-label">Reminder</span>
+          </div>
+          <div class="col-xs-8 txt-right">
+            <select class="form-control" id="txtReminder">
+              <option value="0" selected="selected">Auto</option>
+              <option value="1">None</option>
+              <option value="2">30 minutes before</option>
+              <option value="3">An hours before</option>
+              <option value="4">12 hours before</option>
+              <option value="5">A day before</option>
+              <option value="6">A week before</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12  col-none-padding-left">
+          <textarea class="form-control" rows="6" id="txtNote" placeholder="Notes">
+          </textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- list -->
+  <div class="page animated  fadeOutRight" id="list-event-page">
+  </div>
+  <!-- map -->
+  <div class="page animated  fadeOutRight" id="map-page">
+    <input id='pac-input' class='controls' type='text' placeholder='Search Box'>
+    <div id="map">
+    </div>
+  </div>
+  <!-- Picture -->
+  <div class="page animated Panel slideOutRight" id="takePicturePanel">
+    <div class="flex-container">
+      <div class="row my-list">
+        <div class="col-xs-12 col-none-padding-left">
+          <div class="col-xs-12" id="takephoto">
+            <span>Take Photo</span>
+            <span class="glyphicon glyphicon-menu-right pull-right"></span>
+          </div>
+        </div>
+        <div class="col-xs-12 col-none-padding-left">
+          <div class="col-xs-12 " id="choosephoto">
+            <span>Choose Existing Photo</span>
+            <span class="glyphicon glyphicon-menu-right pull-right"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row my-list">
+        <div class="col-xs-12">
+          <div class="col-xs-12">
+            <span>Chose one</span>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="col-xs-12">
+            <div class="row list-items">
+              <div class="col-xs-3 image-item">
+                <img class="image-item-select" src="img/1.jpg" alt="">
+              </div>
+              <div class="col-xs-3 image-item">
+                <img class="image-item-select" src="img/2.png" alt="">
+              </div>
+              <div class="col-xs-3 image-item">
+                <img class="image-item-select" src="img/3.jpg" alt="">
+              </div>
+              <div class="col-xs-3 image-item">
+                <img class="image-item-select" src="img/4.jpeg" alt="">
+              </div>
+              <div class="col-xs-3 image-item">
+                <img class="image-item-select" src="img/6.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="col-xs-12">
+            <span>Selected Image</span>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <img class="image-item-select" src="" alt="" id="imagePreview">
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Picture -->
+  <div class="page animated Panel slideOutRight" id="mapPanel">
+    <input id='pac-input2' class='controls' type='text' placeholder='Search Box'>
+    <div id="map2">
+    </div>
+  </div>
+  <!-- nav -->
+  <!-- <div class="row nav-mobile">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="presentation-mobile">
+        <a id="home-btn">
+          <span class="glyphicon glyphicon-home"></span>
+        </a>
+      </li>
+      <li role="presentation" class="presentation-mobile">
+        <a id="list-btn">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </a>
+      </li>
+      <li role="presentation" class="presentation-mobile">
+        <a id="new-btn">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+      </li>
+      <li role="presentation" class="presentation-mobile">
+        <a id="search-btn">
+          <span class="glyphicon glyphicon-search"></span>
+        </a>
+      </li>
+      <li role="presentation" class="presentation-mobile">
+        <a id="map-btn">
+          <span class="glyphicon glyphicon-map-marker"></span>
+        </a>
+      </li>
+    </ul>
+  </div> -->
+  <div class="menu-container animated fadeIn" id="event-detail">
+    <div class="flex-container"  id="event-detail-flex">
+      <div class='row event-detail-header' style='margin-bottom: 0px; border: none;'>
+        <div class='col-xs-12'>
+          <div class='row'>
+            <img src='img/default.jpg' class='' alt=''>
+          </div>
+          <div class='row'>
+            <a class='col-xs-12 event-detail-title' style='text-align: left'>Happy Birthday 14th to Lucrek Ck</a>
+          </div>
+        </div>
+      </div>
+      <div class='event-detail-content'>
+        <div class='col-xs-12'>
+          <div class='event-detail-location'>
+            <span class='glyphicon glyphicon-map-marker'></span> New York
+          </div>
+        </div>
+        <div class='col-xs-12'>
+          <div class='event-detail-location event-detail-date'>
+            <div class='row'>
+              <div class='col-xs-12'>
+                <div class='col-xs-3'>
+                  <div class='row'>
+                    Dates
+                  </div>
+                  <div class='row'>
+                    Ends
+                  </div>
+                </div>
+                <div class='col-xs-9'>
+                  <div class='row  pull-right'>
+                    12:00 pm - Feb 12, 2016
+                  </div>
+                  <div class='row pull-right'>
+                    12:00 pm - Feb 12, 2016
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='col-xs-12'>
+          <div class='event-detail-location event-detail-reminder'>
+            <span class='glyphicon glyphicon-bell'></span> Reminder
+            <div class='pull-right'>
+              1 day before
+            </div>
+          </div>
+        </div>
+        <div class='col-xs-12'>
+          <div class='event-detail-location event-detail-notes'>
+            <span style='width: 100%; height: 43px; border-bottom: solid 1px #263f4c; display: block'>
+      <span class='glyphicon glyphicon-bookmark'></span> Notes
+            </span>
+            <p class='event-detail-note-content'></p>
+          </div>
+        </div>
+        <div class='clearfix'></div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-container animated fadeIn" id="menu-hexagon-panel">
+    <div class="hex-wrapper">
+      <div class="hex-row shift">
+        <div class="hexagon animated bounceInDown home-btn" id="nav-home">
+          Events
+          <div class="face1"></div>
+          <div class="face2"></div>
+        </div>
+      </div>
+      <div class="hex-row">
+        <div class="hexagon  animated bounceInLeft search-btn" id="nav-search">
+          Search
+          <div class="face1"></div>
+          <div class="face2"></div>
+        </div>
+        <div class="hexagon animated bounceInRight new-btn" id="nav-new">
+          New
+          <div class="face1"></div>
+          <div class="face2"></div>
+        </div>
+      </div>
+      <div class="hex-row shift">
+        <div class="hexagon  animated bounceInUp map-btn" id="nav-location">
+          Location
+          <div class="face1"></div>
+          <div class="face2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/device.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/DatabaseHandler.js"></script>
+  <script type="text/javascript" src="js/anypicker.js"></script>
+  <script type="text/javascript" src="js/animsition.min.js"></script>
+  <script type="text/javascript" src="js/page.js"></script>
+  <script type="text/javascript" src="js/mymap.js"></script>
+  <script type="text/javascript" src="js/test.js"></script>
+  <script type="text/javascript">
+    app.initialize();
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKLE3E5texWiHncuQt0ionTKj_bZ5Llfs&libraries=places" async defer></script>
+</body>
+
+</html>
